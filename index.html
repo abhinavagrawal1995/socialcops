@@ -35,45 +35,21 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <div class="container">
     <div class="row">
-      <div style="margin-top: 25%">
+    <h1 style="margin-top: 5%;">Social Cops Front end task</h1>
+    <hr>
+      <div style="margin-top: 10%;margin-bottom: 10%">
         <div id="story" contenteditable="true" style="border: groove;">
-          <h4>Click here to enter text</h4>
-          <br>
-          <p>Sample Text</p>
-          <p>
+          <p>Click here to enter text</p>
+          <p><b>Paras are configured to look like this</b></p>
         </div>
       </div>
     </div>
   </div>
-
   <script>
-        var editableEl = document.getElementById('story');
-        editableEl.addEventListener("keypress", function(e) {
-          var charTyped = String.fromCharCode(e.which);
-          if (charTyped == "{" || charTyped == "(") {
-              // Handle this case ourselves
-              e.preventDefault();
-              
-              var sel = window.getSelection();
-              
-              if (sel.rangeCount > 0) {
-                  // First, delete the existing selection
-                  var range = sel.getRangeAt(0);
-                  range.deleteContents();
-                  
-                  // Insert a text node with the braces/parens
-                  var text = (charTyped == "{") ? "{}" : "()";
-                  var textNode = document.createTextNode(text);
-                  range.insertNode(textNode);
-                  
-                  // Move the selection to the middle of the text node
-                  range.setStart(textNode, 1);
-                  range.setEnd(textNode, 1);
-                  sel.removeAllRanges();
-                  sel.addRange(range);
-              }
-          }
-      }, false);        
+     var story = document.getElementById('story');
+     var paras=story.getElementsByTagName("P");
+     for(i=0;i<paras.length;i++)
+      paras[i].style.border="groove";
   </script>
 
 <!-- End Document
