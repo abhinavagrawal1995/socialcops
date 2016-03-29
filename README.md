@@ -8,6 +8,7 @@ Go to Medium.com and after signup try writing a story.
 A story is a list of paragraphs separated by newline character or break. Double click a word and a tooltip to style the word is shown.
 
 Build this editor/notepad type functionality with following features:
+
 1. Each enter will create a new paragraph.
 
 2. Once the editing of paragraph is done, drag and drop the paragraphs to rearrange the order of paragraphs.
