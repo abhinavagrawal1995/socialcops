@@ -1,0 +1,138 @@
+<!DOCTYPE HTML>
+<!--
+	SocialCops Task
+	abhinavagrawal.in | gR00T
+-->
+<html>
+	<head>
+		<title>SocialCops</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<script src="assets/js/rangy-core.js"></script>
+        <script src="assets/js/rangy-classapplier.js"></script>
+        <script src="assets/js/undo.js"></script>
+        <script src="assets/js/medium.js"></script>
+        <link rel="stylesheet" href="assets/css/medium.css">
+	</head>
+	<body class="landing">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header" class="alt">
+					<h1><a href="index.html">SocialCops</a></h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li>
+								<a href="#" class="icon fa-angle-down">Layouts</a>
+								<ul>
+									<li><a href="generic.html">Generic</a></li>
+									<li><a href="contact.html">Contact</a></li>
+									<li><a href="elements.html">Elements</a></li>
+									<li>
+										<a href="#">Submenu</a>
+										<ul>
+											<li><a href="#">Option One</a></li>
+											<li><a href="#">Option Two</a></li>
+											<li><a href="#">Option Three</a></li>
+											<li><a href="#">Option Four</a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li><a href="#" class="button">Sign Up</a></li>
+						</ul>
+					</nav>
+				</header>
+
+			<!-- Banner -->
+				<section id="banner">
+					<h2>SocialCops</h2>
+					<p>FrontEnd developer task. v2.0</p>
+					<ul class="actions">
+						<li><a href="#" class="button">Begin</a></li>
+					</ul>
+				</section>
+
+			<!-- Main -->
+				<section id="main" class="container">
+
+					<section class="box special">
+						<header class="major">
+							<h2>Part 4</h2>
+							<p>Users can enter links in the text editor by using tags. For example, “&lt;a&gt;This is a link &lt;/a&gt;”. When the user clicks “Done”, the editor should detect if the user has entered a link tag in the editor. If so, add that text as an actual link (like this: <a hre"http://google.com">This is a link</a>) to the bottom of the page (outside of the text editor). The links at the bottom of the page should be colored red and blue alternatively, and they do not need to actually link to another site. </p>
+						</header>
+					</section>
+
+					<div class="box">
+						
+						 <div id="article" class="article demo"></div>
+						 <br>
+						 <button class="button special" onclick="done()">Done</button>
+					</div>
+					<div class="box">
+						Links found: <br>
+						<div id="res"></div>
+					</div>
+
+
+				</section>
+
+			<!-- CTA -->
+				
+
+			<!-- Footer -->
+				<footer id="footer">
+					
+					<ul class="copyright">
+						<li>By: <a href="http://abhinavagrawal.in">gR00T</a></li>
+					</ul>
+				</footer>
+
+		</div>
+
+		<!-- Scripts -->
+			<script>
+				function done()
+				{
+					var article =document.getElementById('article');
+					var res =document.getElementById('res');
+					var cont=article.innerHTML;
+					var matches = [];
+						cont=cont.replace(/&lt;/g,"<");
+						cont=cont.replace(/&gt;/g,">");
+					matches=cont.match(/[^<>(&nsbp;) ]*(<a( href="([^"]+)")?>([^<]+)<\/a>)/g);
+					console.log(matches);
+					for(i=0;i<matches.length;i++)
+					{
+						if(i%2!=0)
+						{
+							matches[i]=matches[i].replace("<a","<a style='color: blue;'");
+						}
+					}
+					for(i=0;i<matches.length;i++)
+					{
+						res.innerHTML+="<br>"+matches[i];
+					}
+				}
+			</script>
+			<script>
+			   new Medium({
+			       element: document.getElementById('article'),
+			       mode: Medium.richMode,
+			       placeholder: 'Your Article'
+			   });
+			</script>
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrollgress.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
