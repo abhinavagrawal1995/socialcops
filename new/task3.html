@@ -1,0 +1,155 @@
+<!DOCTYPE HTML>
+<!--
+	SocialCops Task
+	abhinavagrawal.in | gR00T
+-->
+<html>
+	<head>
+		<title>SocialCops</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<link rel="stylesheet" href="assets/css/medium-editor.css" type="text/css" media="screen" charset="utf-8">
+		<link rel="stylesheet" href="assets/css/themes/default.css" id="medium-editor-theme">
+		<script src="assets/js/medium-editor.min.js"></script>
+    	<script src="assets/js/MediumButton.js"></script>
+
+	</head>
+	<body class="landing">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header" class="alt">
+					<h1><a href="index.html">SocialCops</a></h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li>
+								<a href="#" class="icon fa-angle-down">Layouts</a>
+								<ul>
+									<li><a href="generic.html">Generic</a></li>
+									<li><a href="contact.html">Contact</a></li>
+									<li><a href="elements.html">Elements</a></li>
+									<li>
+										<a href="#">Submenu</a>
+										<ul>
+											<li><a href="#">Option One</a></li>
+											<li><a href="#">Option Two</a></li>
+											<li><a href="#">Option Three</a></li>
+											<li><a href="#">Option Four</a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li><a href="#" class="button">Sign Up</a></li>
+						</ul>
+					</nav>
+				</header>
+
+			<!-- Banner -->
+				<section id="banner">
+					<h2>SocialCops</h2>
+					<p>FrontEnd developer task. v2.0</p>
+					<ul class="actions">
+						<li><a href="#" class="button">Begin</a></li>
+					</ul>
+				</section>
+
+			<!-- Main -->
+				<section id="main" class="container">
+
+					<section class="box special">
+						<header class="major">
+							<h2>Part 3</h2>
+							<p> On double-clicking a word, show a tooltip with three options: make the word bold, underlined, and change the text color to Red.</p>
+						</header>
+					</section>
+
+					<div class="box">						
+						 <div class="editable" id="article">asdsa</div>
+						 <br>
+						 <button class="button special" onclick="done()">Done</button>
+						 <button class="button special" onclick="sample()">Sample</button>
+						 
+					</div>
+					<div class="box">
+						Links found: <br>
+						<div id="res"></div>
+					</div>
+
+
+				</section>
+
+			<!-- CTA -->
+				
+
+			<!-- Footer -->
+				<footer id="footer">
+					
+					<ul class="copyright">
+						<li>By: <a href="http://abhinavagrawal.in">gR00T</a></li>
+					</ul>
+				</footer>
+
+		</div>
+
+		<!-- Scripts -->
+			<script>
+			    var editor = new MediumEditor('.editable', {
+			            buttons: ['bold', 'U', 'R'],
+			            extensions: {
+							'pop': new MediumButton({label:'POP', action: function(html, mark){alert('hello :)'); return html;}}),
+							'bold': new MediumButton({label:'BOLD', start:'<b>', end:'</b>'}),
+							'U': new MediumButton({label:'U', start:'<u>', end:'</u>'}),
+							'R': new MediumButton({label:'red', start:'<span style="color:red;">', end:'</span>'})
+						}	
+			        }),
+			        cssLink = document.getElementById('medium-editor-theme');
+
+					document.getElementById('sel-themes').addEventListener('change', function () {
+			            cssLink.href = 'css/' + this.value + '.css';
+			        });
+			</script>
+			<script>
+				function sample()
+				{
+					var article =document.getElementById('article');
+					article.innerHTML="<p><a href='http://google.com'>Google</a></p><p><a>No Link</a></p>";
+				}
+				function done()
+				{
+					var article =document.getElementById('article');
+					var res =document.getElementById('res');
+					res.innerHTML="";
+					var cont=article.innerHTML;
+					var matches = [];
+						cont=cont.replace(/&lt;/g,"<");
+						cont=cont.replace(/&gt;/g,">");
+					matches=cont.match(/[^<>(&nsbp;) ]*(<a( href="([^"]+)")?>([^<]+)<\/a>)/g);
+					console.log(matches);
+					for(i=0;i<matches.length;i++)
+					{
+						if(i%2!=0)
+						{
+							matches[i]=matches[i].replace("<a","<a style='color: blue;'");
+						}
+					}
+					for(i=0;i<matches.length;i++)
+					{
+						res.innerHTML+="<br>"+matches[i];
+					}
+				}
+			</script>
+
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrollgress.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

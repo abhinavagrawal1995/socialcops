@@ -11,11 +11,9 @@
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-		<script src="assets/js/rangy-core.js"></script>
-        <script src="assets/js/rangy-classapplier.js"></script>
-        <script src="assets/js/undo.js"></script>
-        <script src="assets/js/medium.js"></script>
-        <link rel="stylesheet" href="assets/css/medium.css">
+		<script src="assets/js/medium-editor.js"></script>
+		<link rel="stylesheet" href="assets/css/medium-editor.css" type="text/css" media="screen" charset="utf-8">
+        <script src="https://code.jquery.com/jquery-2.2.3.js"   integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4="   crossorigin="anonymous"></script>
 	</head>
 	<body class="landing">
 		<div id="page-wrapper">
@@ -69,9 +67,10 @@
 
 					<div class="box">
 						
-						 <div id="article" class="article demo"></div>
+						  <div class="editable" id="article"></div>
 						 <br>
 						 <button class="button special" onclick="done()">Done</button>
+						 <button class="button special" onclick="sample()">Sample</button>
 					</div>
 					<div class="box">
 						Links found: <br>
@@ -96,10 +95,16 @@
 
 		<!-- Scripts -->
 			<script>
+				function sample()
+				{
+					var article =document.getElementById('article');
+					article.innerHTML="<p><a href='http://google.com'>Google</a></p><p><a>No Link</a></p>";
+				}
 				function done()
 				{
 					var article =document.getElementById('article');
 					var res =document.getElementById('res');
+					res.innerHTML="";
 					var cont=article.innerHTML;
 					var matches = [];
 						cont=cont.replace(/&lt;/g,"<");
@@ -120,11 +125,7 @@
 				}
 			</script>
 			<script>
-			   new Medium({
-			       element: document.getElementById('article'),
-			       mode: Medium.richMode,
-			       placeholder: 'Your Article'
-			   });
+			   var editor = new MediumEditor('.editable');
 			</script>
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.dropotron.min.js"></script>
