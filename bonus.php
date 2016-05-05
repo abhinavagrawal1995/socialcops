@@ -1,3 +1,14 @@
+<?php 
+	function getword(){
+		$ch = curl_init("http://randomword.setgetgo.com/get.php?len=4");
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_HEADER, 0);
+		$data = curl_exec($ch);
+		curl_close($ch);
+		return $data;
+	}
+?>
+
 <!DOCTYPE HTML>
 <!--
 	SocialCops Task
@@ -15,6 +26,8 @@
 		<link rel="stylesheet" href="assets/css/themes/default.css" id="medium-editor-theme">
 		<script src="assets/js/medium-editor.min.js"></script>
     	<script src="assets/js/MediumButton.js"></script>
+
+    	<script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.js"></script>
 
 	</head>
 	<body class="landing">
@@ -35,7 +48,7 @@
 			<!-- Banner -->
 				<section id="banner">
 					<h2>SocialCops</h2>
-					<p>FrontEnd developer task. v2.0</p>
+					<p>FrontEnd developer bonus task.</p>
 					<ul class="actions">
 						<li><a class="button special" onclick="sample()">Sample</a></li>
 					</ul>
@@ -47,15 +60,10 @@
 					<section class="box special">
 
 						<div class="box">						
-						 <div class="editable" id="article">Text goes here</div>
+						 <div class="editable" id="article">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
 						 <br>
-						 <button class="button special" onclick="done()">Done</button>
+						 <button class="button special" onclick="done()">Go</button>
 						 
-					</div>
-					<div class="box">
-						Links found: <br>
-						<nav id="result"></nav>
-						<div id="res"></div>
 					</div>
 					</section>
 
@@ -98,32 +106,18 @@
 				{
 					location.href = "#begin";
 					var article =document.getElementById('article');
-					article.innerHTML="<p>Highlight me!</p><p>This is a link :<a href='http://google.com'>Google</a></p><p><a>No Link</a></p>";
+					article.innerHTML="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+
 				}
 				function done()
 				{
 					location.href = "#res";
 					var article =document.getElementById('article');
-					var res =document.getElementById('res');
-					res.innerHTML="";
-					var cont=article.innerHTML;
-					var matches = [];
-						cont=cont.replace(/&lt;/g,"<");
-						cont=cont.replace(/&gt;/g,">");
-					matches=cont.match(/[^<>(&nsbp;) ]*(<a( href="([^"]+)")?>([^<]+)<\/a>)/g);
-					console.log(matches);
-					for(i=0;i<matches.length;i++)
+					var arr=article.innerHTML.match(/\b(?!span)\w{4}\b/gi);
+					console.log(arr);
+					for(i=0;i<arr.length;i++)
 					{
-						if(i%2!=0)
-						{
-							matches[i]=matches[i].replace("<a","<a style='color: blue;'");
-						}
-						else
-							matches[i]=matches[i].replace("<a","<a style='color: red;'");
-					}
-					for(i=0;i<matches.length;i++)
-					{
-						res.innerHTML+="<br>"+matches[i];
+						article.innerHTML=article.innerHTML.replace(arr[i],"<?php echo getword(); ?>");
 					}
 				}
 			</script>
