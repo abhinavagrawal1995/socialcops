@@ -38,8 +38,8 @@
 					<h1><a href="index.html">SocialCops</a></h1>
 					<nav id="nav">
 						<ul>
-							<li><a href="https://socialcops.quip.com/2T5EAf6Ab7CO" target="_new">Main Task</a></li>
-							<li><a href="https://socialcops.quip.com/2T5EAf6Ab7CO" target="_new">Additional Task</a></li>
+							<li><a href="index.html" target="_new">Main Task</a></li>
+							<li><a href="bonus.php" target="_new">Additional Task</a></li>
 							<li><a href="http://abhinavagrawal.in" class="button">gR00T</a></li>
 						</ul>
 					</nav>
